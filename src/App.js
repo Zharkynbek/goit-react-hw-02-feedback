@@ -1,5 +1,8 @@
 import React, {Component} from "react"
+import FeedbackOptions from "./components/FeedbackOptions/FeedbackOptions"
+import Statistics from "./components/Statistics/Statistics"
 
+// import Section from "./components/Section/Section"
 class App extends Component {
   state = {
     good: 0,
@@ -30,6 +33,36 @@ class App extends Component {
       };
     });
   };
+
+
+  render() {
+    return (
+      <div>
+        <h1>Please leave feedback</h1>
+        <FeedbackOptions
+          goodFeedback={this.goodFeedback}
+          neutralFeedback={this.neutralFeedback}
+          badFeedback={this.badFeedback}
+        />
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.state.good + this.state.neutral + this.state.bad}
+          positivePercentage={this.state.good}
+        />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+
+
+
+
+
 
   // =======================================
 
@@ -69,37 +102,3 @@ class App extends Component {
   //     };
   //   });
   // };
-
-  render() {
-    // const {feedback}  = this.state;
-    return (
-      <div>
-        <h1>Please leave feedback</h1>
-
-        <div className="Counter">
-          <button type="button" onClick={this.goodFeedback}>
-            Good
-          </button>
-
-          <button type="button" onClick={this.neutralFeedback}>
-            Neutral
-          </button>
-
-          <button type="button" onClick={this.badFeedback}>
-            Bad
-          </button>
-        </div>
-        <h2>Statistics</h2>
-        <p>Good: {this.state.good}</p>
-        <p>Neutral: {this.state.neutral}</p>
-        <p>Bad: {this.state.bad}</p>
-        <p>Total: {this.state.good + this.state.neutral + this.state.bad}</p>
-        <span>
-          <p>Positive feedback:</p>{" "}
-        </span>
-      </div>
-    );
-  }
-}
-
-export default App;

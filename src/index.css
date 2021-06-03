@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(88, 151, 151);
 }
 
 code {
@@ -12,8 +13,50 @@ code {
     monospace;
 }
 
-button {
-  margin-right: 20px;
-  padding: 20px;
-  margin-left: 20px;
+h1, h2 {
+  text-align: center;
+  font-family: cursive;
+  color:rgb(233, 171, 14)
+}
+
+.Counter {
+  text-align: center;
+}
+
+
+.Statistics {
+  display: flex;
+  justify-content: center;
+}
+
+.Statistics p {
+  font-weight: 700;
+  font-size: larger;
+  font-style: italic;
+  margin-right: 10px;
+}
+
+.Good {
+  color: #3f51b5
+}
+.Neutral {
+  color: rgb(211, 186, 186)
+}
+.Bad {
+  color: red
+}
+.Total {
+  color: cyan
+}
+
+.positiveFeedback {
+  color: #fff
+}
+
+.goodBtn {
+  margin-right: 30px;
+}
+
+.neutralBtn {
+  margin-right: 30px;
 }
