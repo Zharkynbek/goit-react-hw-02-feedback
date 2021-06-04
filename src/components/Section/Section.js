@@ -1,20 +1,25 @@
 import React from "react"
+import FeedbackOptions from "../FeedbackOptions/FeedbackOptions"
+import Statistics from "../Statistics/Statistics"
 
-const Section = () => (
+const Section = ({
+  good,
+  neutral,
+  bad,
+  total,
+  positivePercentage,
+  onChangeFeedback,
+}) => (
   <>
     <h1>Please leave feedback</h1>
-    <FeedbackOptions
-      goodFeedback={this.goodFeedback}
-      neutralFeedback={this.neutralFeedback}
-      badFeedback={this.badFeedback}
-    />
-    <Statistics
-      good={this.state.good}
-      neutral={this.state.neutral}
-      bad={this.state.bad}
-      total={this.state.good + this.state.neutral + this.state.bad}
-      positivePercentage={this.state.good}
-    />
+    <FeedbackOptions onChangeFeedback={onChangeFeedback} />
+   {!!total && <Statistics
+      good={good}
+      neutral={neutral}
+      bad={bad}
+      total={total}
+      positivePercentage={positivePercentage}
+    />}
   </>
 );
 

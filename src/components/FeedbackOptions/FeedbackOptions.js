@@ -1,22 +1,37 @@
 import React from "react"
 import "./FeedbackOptions.css"
-
 import { Button } from "@material-ui/core";
-const FeedbackOptions = ({ goodFeedback, neutralFeedback, badFeedback }) => (
+
+
+const FeedbackOptions = ({ onChangeFeedback }) => (
   <div className="Counter">
     <span className="goodBtn">
-      <Button variant="contained" color="primary" onClick={goodFeedback}>
+      <Button
+        name="good"
+        variant="contained"
+        color="primary"
+        onClick={(e) => onChangeFeedback(e.currentTarget.name)}
+      >
         :)
       </Button>
     </span>
 
     <span className="neutralBtn">
-      <Button variant="contained" onClick={neutralFeedback}>
+      <Button
+        name="neutral"
+        variant="contained"
+        onClick={(e) => onChangeFeedback(e.currentTarget.name)}
+      >
         :|
       </Button>
     </span>
 
-    <Button variant="contained" color="secondary" onClick={badFeedback}>
+    <Button
+      name="bad"
+      variant="contained"
+      color="secondary"
+      onClick={(e) => onChangeFeedback(e.currentTarget.name)}
+    >
       :(
     </Button>
   </div>
