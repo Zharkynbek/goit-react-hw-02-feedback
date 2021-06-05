@@ -1,7 +1,5 @@
 import React, {Component} from "react"
 import Section from "./components/Section/Section"
-
-
 class App extends Component {
   state = {
     good: 0,
