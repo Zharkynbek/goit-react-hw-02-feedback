@@ -1,41 +1,42 @@
-import React, {Component} from "react"
-import Section from "./components/Section/Section"
-class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+import React, { useState } from "react";
+import Section from "./components/Section/Section";
+
+export default function App() {
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
+
+  const handleChangeFeedback = (name) => {
+    switch (name) {
+      case "good":
+        setGood((prevState) => prevState + 1);
+        break;
+      case "neutral":
+        setNeutral((prevState) => prevState + 1);
+        break;
+      case "bad":
+        setBad((prevState) => prevState + 1);
+        break;
+      default:
+        return;
+    }
   };
 
-  handleChangeFeedback = (name) => {
-    this.setState((prevState) => {
-      return {
-        [name]: prevState[name] + 1,
-      };
-    });
+  const getPositivePercentage = () => {
+    return good
+      ? Math.ceil((good / (neutral + bad + good)) * 100) + "%"
+      : 0 + "%";
   };
-
-
-  getPositivePercentage = () => {
-    const { good, neutral, bad } = this.state
-    return good ? Math.ceil((good / (neutral + bad + good)) * 100) + '%' : 0 + '%'
-  }
-  render() {
-    return (
-      <div>
-        <Section
-          onChangeFeedback={this.handleChangeFeedback}
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.state.good + this.state.neutral + this.state.bad}
-          positivePercentage={this.getPositivePercentage()}
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Section
+        onChangeFeedback={handleChangeFeedback}
+        good={good}
+        neutral={neutral}
+        bad={bad}
+        total={good + neutral + bad}
+        positivePercentage={getPositivePercentage()}
+      />
+    </div>
+  );
 }
-
-export default App;
-
-
